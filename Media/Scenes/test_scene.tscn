@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7r41vvaw6jr1"]
+
+[ext_resource type="PackedScene" uid="uid://8ol4gkukar1l" path="res://Media/Scenes/player.tscn" id="1_vytvb"]
+[ext_resource type="PackedScene" uid="uid://bdow0fwoyxy11" path="res://Media/Scenes/test_cube.tscn" id="2_dqjo0"]
+[ext_resource type="PackedScene" uid="uid://4vl6g5jg36l" path="res://Media/Scenes/light_cube.tscn" id="3_woro4"]
+[ext_resource type="PackedScene" uid="uid://oy4nifhc55di" path="res://Media/Scenes/interaction_body.tscn" id="4_7fjbg"]
+[ext_resource type="PackedScene" uid="uid://6o7rrbfjk73d" path="res://Media/Scenes/custom_cursor.tscn" id="5_2lhw5"]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_vytvb")]
+position = Vector2(-136, 240)
+motion_mode = 1
+
+[node name="TestCube" parent="." instance=ExtResource("2_dqjo0")]
+position = Vector2(390, 330)
+
+[node name="TestCube2" parent="." instance=ExtResource("2_dqjo0")]
+position = Vector2(670, 413)
+
+[node name="TestCube3" parent="." instance=ExtResource("2_dqjo0")]
+position = Vector2(665, 200)
+
+[node name="TestCube4" parent="." instance=ExtResource("2_dqjo0")]
+position = Vector2(31, 481)
+
+[node name="TestCube5" parent="." instance=ExtResource("2_dqjo0")]
+position = Vector2(373, 51)
+
+[node name="TestCube6" parent="." instance=ExtResource("2_dqjo0")]
+position = Vector2(982, 426)
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -1
+offset_left = -1168.0
+offset_top = -584.0
+offset_right = 1512.0
+offset_bottom = 1152.0
+color = Color(2.67126e-06, 0.590148, 0.253761, 1)
+
+[node name="LightCube" parent="." instance=ExtResource("3_woro4")]
+position = Vector2(504, 176)
+
+[node name="LightCube2" parent="." instance=ExtResource("3_woro4")]
+position = Vector2(216, 496)
+
+[node name="LightCube3" parent="." instance=ExtResource("3_woro4")]
+position = Vector2(1072, 336)
+
+[node name="InteractionBody" parent="." instance=ExtResource("4_7fjbg")]
+position = Vector2(96, -32)
+
+[node name="InteractionBody2" parent="." instance=ExtResource("4_7fjbg")]
+position = Vector2(-224, -32)
+
+[node name="InteractionBody3" parent="." instance=ExtResource("4_7fjbg")]
+position = Vector2(-224, 96)
+
+[node name="CustomCursor" parent="." instance=ExtResource("5_2lhw5")]

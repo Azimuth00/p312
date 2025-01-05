@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://oy4nifhc55di"]
+
+[ext_resource type="Texture2D" uid="uid://dsyojjd6jk0pl" path="res://Media/Images/interaction_yellow_sign.png" id="1_8s3n0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dfukd"]
+size = Vector2(64, 64)
+
+[sub_resource type="Gradient" id="Gradient_740pl"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tlabf"]
+gradient = SubResource("Gradient_740pl")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+
+[node name="InteractionBody" type="StaticBody2D" groups=["Interaction"]]
+
+[node name="Texture" type="ColorRect" parent="."]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+color = Color(0, 0.439606, 0.402278, 1)
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_dfukd")
+
+[node name="InteractionSign" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -32)
+texture = ExtResource("1_8s3n0")
+
+[node name="Light" type="PointLight2D" parent="."]
+color = Color(0, 1, 1, 1)
+energy = 0.5
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.541176)
+texture = SubResource("GradientTexture2D_tlabf")
+texture_scale = 3.0

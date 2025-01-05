@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://8ol4gkukar1l"]
+
+[ext_resource type="Script" path="res://Media/Scripts/player.gd" id="1_xwpt2"]
+[ext_resource type="Shape2D" uid="uid://1okwqtx8dyu7" path="res://Media/Other/player.tres" id="2_xcern"]
+
+[sub_resource type="Gradient" id="Gradient_n00q5"]
+interpolation_mode = 1
+colors = PackedColorArray(0.6, 0.6, 0.6, 1, 0.601223, 0.601223, 0.601223, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pphh6"]
+gradient = SubResource("Gradient_n00q5")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gjca8"]
+polygon = PackedVector2Array(-32, 0, -32, -8, -24, -24, -8, -32, 0, -32, 8, -32, 24, -24, 32, -8, 32, 0, 32, 8, 24, 24, 8, 32, 0, 32, -8, 32, -24, 24, -32, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pynyo"]
+radius = 90.5097
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_xwpt2")
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_pphh6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = ExtResource("2_xcern")
+
+[node name="Camera" type="Camera2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_top = -8.0
+offset_right = 32.0
+offset_bottom = 8.0
+color = Color(0, 0, 0, 1)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_gjca8")
+sdf_collision = false
+
+[node name="InteractionRange" type="Area2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="InteractionRange"]
+shape = SubResource("CircleShape2D_pynyo")
+
+[connection signal="body_entered" from="InteractionRange" to="." method="_on_interaction_range_body_entered"]
+[connection signal="body_exited" from="InteractionRange" to="." method="_on_interaction_range_body_exited"]

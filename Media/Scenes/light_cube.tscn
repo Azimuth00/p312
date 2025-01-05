@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://4vl6g5jg36l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_32cc8"]
+size = Vector2(64, 64)
+
+[sub_resource type="Gradient" id="Gradient_740pl"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y8tb3"]
+gradient = SubResource("Gradient_740pl")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+
+[node name="LightCube" type="StaticBody2D"]
+
+[node name="Texture" type="ColorRect" parent="."]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+color = Color(0.389566, 0.398314, 9.62615e-08, 1)
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_32cc8")
+
+[node name="Light" type="PointLight2D" parent="."]
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.541176)
+texture = SubResource("GradientTexture2D_y8tb3")
+texture_scale = 10.0
