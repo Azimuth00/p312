@@ -1,8 +1,44 @@
-[gd_scene load_steps=4 format=3 uid="uid://t0rlq68s0wqb"]
+[gd_scene load_steps=7 format=3 uid="uid://t0rlq68s0wqb"]
 
 [ext_resource type="Script" path="res://Media/Scripts/menu.gd" id="1_5uo84"]
 [ext_resource type="PackedScene" uid="uid://6o7rrbfjk73d" path="res://Media/Scenes/custom_cursor.tscn" id="2_ow48a"]
 [ext_resource type="FontFile" uid="uid://b6b8yj3tippe5" path="res://Media/Other/ST-Brigantina-free.otf" id="3_0u766"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pbf2c"]
+bg_color = Color(0.612774, 0.157246, 0, 1)
+border_width_bottom = 10
+border_color = Color(0.313543, 0.063596, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ipqg1"]
+bg_color = Color(0.45875, 0.10829, 0, 1)
+border_width_bottom = 10
+border_color = Color(0.313543, 0.063596, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Theme" id="Theme_5g4a0"]
+default_font = ExtResource("3_0u766")
+default_font_size = 50
+Button/colors/font_color = Color(0.954779, 0.703409, 0.6199, 1)
+Button/colors/font_focus_color = Color(0.961421, 0.749727, 0.680305, 1)
+Button/colors/font_hover_color = Color(0.960784, 0.74902, 0.678431, 1)
+Button/colors/font_hover_pressed_color = Color(0.960784, 0.74902, 0.678431, 1)
+Button/colors/font_pressed_color = Color(0.960784, 0.74902, 0.678431, 1)
+Button/styles/focus = SubResource("StyleBoxFlat_pbf2c")
+Button/styles/hover = SubResource("StyleBoxFlat_pbf2c")
+Button/styles/hover_mirrored = SubResource("StyleBoxFlat_pbf2c")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_pbf2c")
+Button/styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_ipqg1")
+Button/styles/normal = SubResource("StyleBoxFlat_ipqg1")
+Button/styles/normal_mirrored = SubResource("StyleBoxFlat_ipqg1")
+Button/styles/pressed = SubResource("StyleBoxFlat_ipqg1")
+Button/styles/pressed_mirrored = SubResource("StyleBoxFlat_ipqg1")
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -22,20 +58,8 @@ offset_bottom = 648.0
 color = Color(0.247059, 0.0666667, 0.0470588, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="Background2" type="ColorRect" parent="."]
-visible = false
-z_index = -1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0208333
-anchor_top = 0.037037
-anchor_right = 0.979167
-anchor_bottom = 0.962963
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.248515, 0.0684946, 0.0481444, 1)
-
 [node name="CustomCursor" parent="." instance=ExtResource("2_ow48a")]
+z_index = 5
 
 [node name="Header" type="Label" parent="."]
 layout_mode = 1
@@ -60,41 +84,64 @@ vertical_alignment = 1
 
 [node name="CenterButtons" type="Control" parent="."]
 layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.667
+anchor_right = 0.5
+anchor_bottom = 0.667
+offset_left = -128.0
+offset_top = -176.216
+offset_right = 128.0
+offset_bottom = 175.784
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(128, 176)
+theme = SubResource("Theme_5g4a0")
+
+[node name="PlayButton" type="Button" parent="CenterButtons"]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 64.0
+text = "Играть"
+metadata/_edit_lock_ = true
+
+[node name="SettingsButton" type="Button" parent="CenterButtons"]
+layout_mode = 0
+offset_top = 96.0
+offset_right = 256.0
+offset_bottom = 160.0
+text = "Настройки"
+metadata/_edit_lock_ = true
+
+[node name="CreditsButton" type="Button" parent="CenterButtons"]
+layout_mode = 0
+offset_top = 192.0
+offset_right = 256.0
+offset_bottom = 256.0
+text = "Авторы"
+metadata/_edit_lock_ = true
+
+[node name="QuitButton" type="Button" parent="CenterButtons"]
+layout_mode = 0
+offset_top = 288.0
+offset_right = 256.0
+offset_bottom = 352.0
+text = "Выход
+"
+metadata/_edit_lock_ = true
+
+[node name="Background" type="ColorRect" parent="CenterButtons"]
+z_index = -1
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = -68.0
-offset_right = 128.0
-offset_bottom = 284.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="Button" parent="CenterButtons"]
-layout_mode = 0
-offset_right = 256.0
-offset_bottom = 64.0
-text = "Button"
-
-[node name="Button2" type="Button" parent="CenterButtons"]
-layout_mode = 0
-offset_top = 96.0
-offset_right = 256.0
-offset_bottom = 160.0
-text = "Button"
-
-[node name="Button3" type="Button" parent="CenterButtons"]
-layout_mode = 0
-offset_top = 192.0
-offset_right = 256.0
-offset_bottom = 256.0
-text = "Button"
-
-[node name="Button4" type="Button" parent="CenterButtons"]
-layout_mode = 0
-offset_top = 288.0
-offset_right = 256.0
-offset_bottom = 352.0
-text = "Button"
+[connection signal="pressed" from="CenterButtons/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CenterButtons/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="CenterButtons/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="CenterButtons/QuitButton" to="." method="_on_quit_button_pressed"]
