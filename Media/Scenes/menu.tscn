@@ -1,9 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://t0rlq68s0wqb"]
+[gd_scene load_steps=10 format=3 uid="uid://t0rlq68s0wqb"]
 
 [ext_resource type="Script" path="res://Media/Scripts/menu.gd" id="1_5uo84"]
 [ext_resource type="PackedScene" uid="uid://6o7rrbfjk73d" path="res://Media/Scenes/custom_cursor.tscn" id="2_ow48a"]
 [ext_resource type="FontFile" uid="uid://b6b8yj3tippe5" path="res://Media/Other/ST-Brigantina-free.otf" id="3_0u766"]
 [ext_resource type="StyleBox" uid="uid://dy4h68fhwxxop" path="res://Media/Other/background_theme1.tres" id="4_yi517"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iuggk"]
+bg_color = Color(0.37, 0.152625, 0.0925, 1)
+border_width_bottom = 10
+border_color = Color(0.23, 0.083375, 0.0575, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pbf2c"]
 bg_color = Color(0.612774, 0.157246, 0, 1)
@@ -31,6 +40,8 @@ Button/colors/font_focus_color = Color(0.961421, 0.749727, 0.680305, 1)
 Button/colors/font_hover_color = Color(0.960784, 0.74902, 0.678431, 1)
 Button/colors/font_hover_pressed_color = Color(0.960784, 0.74902, 0.678431, 1)
 Button/colors/font_pressed_color = Color(0.960784, 0.74902, 0.678431, 1)
+Button/styles/disabled = SubResource("StyleBoxFlat_iuggk")
+Button/styles/disabled_mirrored = null
 Button/styles/focus = SubResource("StyleBoxFlat_pbf2c")
 Button/styles/hover = SubResource("StyleBoxFlat_pbf2c")
 Button/styles/hover_mirrored = SubResource("StyleBoxFlat_pbf2c")
@@ -40,6 +51,19 @@ Button/styles/normal = SubResource("StyleBoxFlat_ipqg1")
 Button/styles/normal_mirrored = SubResource("StyleBoxFlat_ipqg1")
 Button/styles/pressed = SubResource("StyleBoxFlat_ipqg1")
 Button/styles/pressed_mirrored = SubResource("StyleBoxFlat_ipqg1")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xe4cg"]
+bg_color = Color(0.8, 0.36, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.517415, 0.223364, 0, 1)
+border_blend = true
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -210,7 +234,6 @@ mouse_filter = 2
 color = Color(0.178661, 0.0393413, 0.0255947, 0.389)
 
 [node name="Settings" type="Control" parent="."]
-visible = false
 z_index = 1
 layout_mode = 1
 anchor_left = 0.014
@@ -219,6 +242,7 @@ anchor_right = 0.986111
 anchor_bottom = 0.975309
 offset_left = -0.128
 offset_top = -0.200001
+theme = SubResource("Theme_5g4a0")
 metadata/_edit_use_anchors_ = true
 
 [node name="MainBackground" type="Panel" parent="Settings"]
@@ -230,20 +254,237 @@ offset_right = 0.00012207
 offset_bottom = -0.000244141
 theme_override_styles/panel = ExtResource("4_yi517")
 
-[node name="HeaderButtons" type="Control" parent="Settings"]
-z_index = 1
-anchors_preset = 0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 1104.0
-offset_bottom = 80.0
-theme = SubResource("Theme_5g4a0")
-
-[node name="ExitButton3" type="Button" parent="Settings/HeaderButtons"]
-layout_mode = 0
-offset_right = 96.0
-offset_bottom = 62.0
+[node name="ExitButton" type="Button" parent="Settings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0142857
+anchor_top = 0.025974
+anchor_right = 0.0142857
+anchor_bottom = 0.026
+offset_right = 128.0
+offset_bottom = 63.984
+theme_override_font_sizes/font_size = 50
 text = "Назад"
+
+[node name="GameSettingsButton" type="Button" parent="Settings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.157
+anchor_top = 0.026
+anchor_right = 0.157
+anchor_bottom = 0.026
+offset_left = 0.160019
+offset_top = -0.0160065
+offset_right = 128.16
+offset_bottom = 63.984
+text = "Игра"
+
+[node name="Indicator" type="Panel" parent="Settings/GameSettingsButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.25
+theme_override_styles/panel = SubResource("StyleBoxFlat_xe4cg")
+metadata/_edit_use_anchors_ = true
+
+[node name="VideoSettingsButton" type="Button" parent="Settings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.026
+anchor_right = 0.3
+anchor_bottom = 0.026
+offset_left = 3.05176e-05
+offset_top = -0.0160065
+offset_right = 128.0
+offset_bottom = 63.984
+text = "Видео"
+
+[node name="Indicator" type="Panel" parent="Settings/VideoSettingsButton"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.25
+theme_override_styles/panel = SubResource("StyleBoxFlat_xe4cg")
+metadata/_edit_use_anchors_ = true
+
+[node name="AudioSettingsButton" type="Button" parent="Settings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.443
+anchor_top = 0.026
+anchor_right = 0.443
+anchor_bottom = 0.026
+offset_left = -0.159973
+offset_top = -0.0160065
+offset_right = 127.84
+offset_bottom = 63.984
+text = "Аудио"
+
+[node name="Indicator" type="Panel" parent="Settings/AudioSettingsButton"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.25
+theme_override_styles/panel = SubResource("StyleBoxFlat_xe4cg")
+metadata/_edit_use_anchors_ = true
+
+[node name="ControlSettingsButton" type="Button" parent="Settings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.586
+anchor_top = 0.026
+anchor_right = 0.586
+anchor_bottom = 0.026
+offset_left = -0.319946
+offset_top = -0.0160065
+offset_right = 127.68
+offset_bottom = 63.984
+text = "Управление"
+
+[node name="Indicator" type="Panel" parent="Settings/ControlSettingsButton"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.25
+theme_override_styles/panel = SubResource("StyleBoxFlat_xe4cg")
+metadata/_edit_use_anchors_ = true
+
+[node name="OtherSettingsButton" type="Button" parent="Settings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.729
+anchor_top = 0.026
+anchor_right = 0.729
+anchor_bottom = 0.026
+offset_left = -0.479919
+offset_top = -0.0160065
+offset_right = 127.52
+offset_bottom = 63.984
+text = "Прочее"
+
+[node name="Indicator" type="Panel" parent="Settings/OtherSettingsButton"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.25
+theme_override_styles/panel = SubResource("StyleBoxFlat_xe4cg")
+metadata/_edit_use_anchors_ = true
+
+[node name="SettingsButton" type="Button" parent="Settings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.871
+anchor_top = 0.026
+anchor_right = 0.871
+anchor_bottom = 0.026
+offset_left = 0.480042
+offset_top = -0.0160065
+offset_right = 128.48
+offset_bottom = 63.984
+disabled = true
+
+[node name="Indicator" type="Panel" parent="Settings/SettingsButton"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.25
+theme_override_styles/panel = SubResource("StyleBoxFlat_xe4cg")
+metadata/_edit_use_anchors_ = true
+
+[node name="GS_window" type="Control" parent="Settings"]
+layout_mode = 1
+anchor_left = 0.0142857
+anchor_top = 0.181818
+anchor_right = 0.985714
+anchor_bottom = 0.974026
+
+[node name="ColorRect" type="ColorRect" parent="Settings/GS_window"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.963049, 0.426847, 9.62615e-07, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="VS_window" type="Control" parent="Settings"]
+visible = false
+layout_mode = 1
+anchor_left = 0.0142857
+anchor_top = 0.181818
+anchor_right = 0.985714
+anchor_bottom = 0.974026
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Settings/VS_window"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.999999, 0.23798, 0.749309, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="AS_window" type="Control" parent="Settings"]
+visible = false
+layout_mode = 1
+anchor_left = 0.0142857
+anchor_top = 0.181818
+anchor_right = 0.985714
+anchor_bottom = 0.974026
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Settings/AS_window"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(1.34766e-06, 0.688783, 0.753041, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="CS_window" type="Control" parent="Settings"]
+visible = false
+layout_mode = 1
+anchor_left = 0.0142857
+anchor_top = 0.181818
+anchor_right = 0.985714
+anchor_bottom = 0.974026
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Settings/CS_window"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.532843, 0.553602, 0.996983, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="OS_window" type="Control" parent="Settings"]
+visible = false
+layout_mode = 1
+anchor_left = 0.0142857
+anchor_top = 0.181818
+anchor_right = 0.985714
+anchor_bottom = 0.974026
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Settings/OS_window"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.454249, 0.578993, 1, 1)
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="CenterButtons/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CenterButtons/SettingsButton" to="." method="_on_settings_button_pressed"]
@@ -251,4 +492,10 @@ text = "Назад"
 [connection signal="pressed" from="CenterButtons/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="body_entered" from="PlayButtons/Out" to="." method="_on_out_body_entered"]
 [connection signal="body_exited" from="PlayButtons/Out" to="." method="_on_out_body_exited"]
-[connection signal="pressed" from="Settings/HeaderButtons/ExitButton3" to="." method="_on_exit_button_3_pressed"]
+[connection signal="pressed" from="Settings/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Settings/GameSettingsButton" to="." method="_on_game_settings_button_pressed"]
+[connection signal="pressed" from="Settings/VideoSettingsButton" to="." method="_on_video_settings_button_pressed"]
+[connection signal="pressed" from="Settings/AudioSettingsButton" to="." method="_on_audio_settings_button_pressed"]
+[connection signal="pressed" from="Settings/ControlSettingsButton" to="." method="_on_control_settings_button_pressed"]
+[connection signal="pressed" from="Settings/OtherSettingsButton" to="." method="_on_other_settings_button_pressed"]
+[connection signal="pressed" from="Settings/SettingsButton" to="." method="_on_settings_button_pressed"]
